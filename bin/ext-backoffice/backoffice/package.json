@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"description": "Security scan configuration for Java Script libraries used in backoffice",
 	"dependencies": {
-		"angular": "1.6.5",
+		"angular": "1.7.9",
 		"anythingzoomer": "2.2.3",
 		"codemirror": "3.14.1",
 		"jquery-ui": "1.12.1",
