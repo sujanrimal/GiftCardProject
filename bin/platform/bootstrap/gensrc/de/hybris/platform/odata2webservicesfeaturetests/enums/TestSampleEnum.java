@@ -1,0 +1,75 @@
+/*
+ *  
+ * [y] hybris Platform
+ * Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved.
+ * This software is the confidential and proprietary information of SAP
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the
+ * license agreement you entered into with SAP.
+ */
+package de.hybris.platform.odata2webservicesfeaturetests.enums;
+
+import de.hybris.platform.core.HybrisEnumValue;
+
+/**
+ * Generated enum TestSampleEnum declared at extension odata2webservicesfeaturetests.
+ */
+@SuppressWarnings("PMD")
+public enum TestSampleEnum implements HybrisEnumValue
+{
+	/**
+	 * Generated enum value for TestSampleEnum.one declared at extension odata2webservicesfeaturetests.
+	 */
+	ONE("one"),
+	/**
+	 * Generated enum value for TestSampleEnum.two declared at extension odata2webservicesfeaturetests.
+	 */
+	TWO("two"),
+	/**
+	 * Generated enum value for TestSampleEnum.three declared at extension odata2webservicesfeaturetests.
+	 */
+	THREE("three");
+	 
+	/**<i>Generated model type code constant.</i>*/
+	public final static String _TYPECODE = "TestSampleEnum";
+	
+	/**<i>Generated simple class name constant.</i>*/
+	public final static String SIMPLE_CLASSNAME = "TestSampleEnum";
+	
+	/** The code of this enum.*/
+	private final String code;
+	
+	/**
+	 * Creates a new enum value for this enum type.
+	 *  
+	 * @param code the enum value code
+	 */
+	private TestSampleEnum(final String code)
+	{
+		this.code = code.intern();
+	}
+	
+	
+	/**
+	 * Gets the code of this enum value.
+	 *  
+	 * @return code of value
+	 */
+	@Override
+	public String getCode()
+	{
+		return this.code;
+	}
+	
+	/**
+	 * Gets the type this enum value belongs to.
+	 *  
+	 * @return code of type
+	 */
+	@Override
+	public String getType()
+	{
+		return SIMPLE_CLASSNAME;
+	}
+	
+}

@@ -1,0 +1,9 @@
+  (
+    (
+      $product := ProductRAO(code in ("123","456","789"))
+      or
+      (
+        $product := ProductRAO(color == "blue")
+      )
+    )
+  )

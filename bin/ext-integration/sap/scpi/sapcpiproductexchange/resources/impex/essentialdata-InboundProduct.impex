@@ -1,0 +1,141 @@
+INSERT_UPDATE IntegrationObject; code[unique = true];
+; InboundProduct
+
+INSERT_UPDATE IntegrationObjectItem; integrationObject(code)[unique=true]; code[unique = true]; type(code)
+; InboundProduct    ; Product               ; Product
+; InboundProduct    ; Unit                  ; Unit
+; InboundProduct    ; Catalog               ; Catalog
+; InboundProduct    ; CatalogVersion        ; CatalogVersion
+; InboundProduct    ; PriceRow              ; PriceRow
+; InboundProduct    ; Category              ; Category
+; InboundProduct    ; ProductPriceGroup     ; ProductPriceGroup
+; InboundProduct    ; ProductDiscountGroup  ; ProductDiscountGroup
+; InboundProduct    ; ProductTaxGroup       ; ProductTaxGroup
+; InboundProduct    ; VariantType           ; VariantType
+; InboundProduct    ; Warehouse             ; Warehouse
+; InboundProduct    ; Vendor                ; Vendor
+
+
+INSERT_UPDATE IntegrationObjectItemAttribute; integrationObjectItem(integrationObject(code), code)[unique = true]; attributeName[unique = true]; attributeDescriptor(enclosingType(code), qualifier); returnIntegrationObjectItem(integrationObject(code), code); unique[default = false]; autoCreate[default = false]
+; InboundProduct:Catalog              ; id                      ; Catalog:id                      ;
+; InboundProduct:CatalogVersion       ; catalog                 ; CatalogVersion:catalog          ; InboundProduct:Catalog
+; InboundProduct:CatalogVersion       ; version                 ; CatalogVersion:version          ;
+; InboundProduct:CatalogVersion       ; active                  ; CatalogVersion:active           ;
+; InboundProduct:Unit                 ; code                    ; Unit:code                       ;
+; InboundProduct:Unit                 ; name                    ; Unit:name                       ;
+; InboundProduct:Unit                 ; unitType                ; Unit:unitType                   ;
+; InboundProduct:ProductPriceGroup    ; code                    ; ProductPriceGroup:code          ;
+; InboundProduct:ProductDiscountGroup ; code                    ; ProductDiscountGroup:code       ;
+; InboundProduct:ProductTaxGroup      ; code                    ; ProductTaxGroup:code            ;
+; InboundProduct:VariantType          ; code                    ; VariantType:code                ;
+; InboundProduct:Warehouse            ; code                    ; Warehouse:code                  ; ; true
+; InboundProduct:Warehouse            ; vendor                  ; Warehouse:vendor                ; InboundProduct:Vendor
+; InboundProduct:Warehouse            ; name                    ; Warehouse:name                  ;
+; InboundProduct:Vendor               ; code                    ; Vendor:code                     ; ; true
+; InboundProduct:Product              ; code                    ; Product:code                    ;
+; InboundProduct:Product              ; catalogVersion          ; Product:catalogVersion          ; InboundProduct:CatalogVersion
+; InboundProduct:Product              ; name                    ; Product:name                    ;
+; InboundProduct:Product              ; unit                    ; Product:unit                    ; InboundProduct:Unit
+; InboundProduct:Product              ; pricerow                ; Product:ownEurope1Prices        ; InboundProduct:PriceRow
+; InboundProduct:Product              ; Europe1PriceFactory_PPG ; Product:Europe1PriceFactory_PPG ; InboundProduct:ProductPriceGroup
+; InboundProduct:Product              ; Europe1PriceFactory_PDG ; Product:Europe1PriceFactory_PDG ; InboundProduct:ProductDiscountGroup
+; InboundProduct:Product              ; Europe1PriceFactory_PTG ; Product:Europe1PriceFactory_PTG ; InboundProduct:ProductTaxGroup
+; InboundProduct:Product              ; supercategories         ; Product:supercategories         ; InboundProduct:Category         ;;true
+; InboundProduct:Product              ; sapBlocked              ; Product:sapBlocked              ;
+; InboundProduct:Product              ; sapBaseUnitConversion   ; Product:sapBaseUnitConversion   ;
+; InboundProduct:Product              ; sapEAN                  ; Product:sapEAN                  ;
+; InboundProduct:Product              ; sapBlockedDate          ; Product:sapBlockedDate          ;
+; InboundProduct:Product              ; variantType             ; Product:variantType             ; InboundProduct:VariantType
+; InboundProduct:Product              ; sapPlant                ; Product:sapPlant                ; InboundProduct:Warehouse
+; InboundProduct:Product              ; sapConfigurable         ; Product:sapConfigurable         ;
+; InboundProduct:PriceRow             ; price                   ; PriceRow:price                  ; ; true
+; InboundProduct:PriceRow             ; unit                    ; PriceRow:unit                   ; InboundProduct:Unit
+; InboundProduct:Category             ; code                    ; Category:code                   ;
+; InboundProduct:Category             ; catalogVersion          ; Category:catalogVersion         ; InboundProduct:CatalogVersion
+
+
+#**************************************************
+#************* ERPVariantProduct ******************
+#**************************************************
+INSERT_UPDATE IntegrationObject; code[unique = true]; integrationType(code) 
+; InboundERPVariantProduct; INBOUND 
+ 
+INSERT_UPDATE IntegrationObjectItem; integrationObject(code)[unique = true]; code[unique = true]; type(code)
+; InboundERPVariantProduct	; ProductFeature      	; ProductFeature      	; 	  
+; InboundERPVariantProduct	; CatalogVersion      	; CatalogVersion      	; 	  
+; InboundERPVariantProduct	; ProductTaxGroup     	; ProductTaxGroup     	; 	  
+; InboundERPVariantProduct	; ERPVariantProduct   	; ERPVariantProduct   	;   
+; InboundERPVariantProduct	; Catalog             	; Catalog             	; 	  
+; InboundERPVariantProduct	; Product             	; Product             	; 	  
+; InboundERPVariantProduct	; ProductPriceGroup   	; ProductPriceGroup   	; 	  
+; InboundERPVariantProduct	; VariantType         	; VariantType         	; 	  
+; InboundERPVariantProduct	; Category            	; Category            	; 	  
+; InboundERPVariantProduct	; Unit                	; Unit                	; 	  
+; InboundERPVariantProduct	; Warehouse           	; Warehouse           	; 	  
+; InboundERPVariantProduct	; ProductDiscountGroup	; ProductDiscountGroup	; 	  
+ 
+INSERT_UPDATE IntegrationObjectItemAttribute; integrationObjectItem(integrationObject(code), code)[unique = true]; attributeName[unique = true]; attributeDescriptor(enclosingType(code), qualifier); returnIntegrationObjectItem(integrationObject(code), code); unique[default = false]; autoCreate[default = false] 
+; InboundERPVariantProduct:ProductFeature      	; product                	; ProductFeature:product                   	; InboundERPVariantProduct:Product             	; true	;  
+; InboundERPVariantProduct:ProductFeature      	; valuePosition          	; ProductFeature:valuePosition             	;                                               	; true	;  
+; InboundERPVariantProduct:ProductFeature      	; author                 	; ProductFeature:author                    	;                                               	; 	;  
+; InboundERPVariantProduct:ProductFeature      	; value                  	; ProductFeature:value                     	;                                               	; 	;  
+; InboundERPVariantProduct:ProductFeature      	; qualifier              	; ProductFeature:qualifier                 	;                                               	; true	;  
+; InboundERPVariantProduct:CatalogVersion      	; catalog                	; CatalogVersion:catalog                   	; InboundERPVariantProduct:Catalog             	; true	;  
+; InboundERPVariantProduct:CatalogVersion      	; version                	; CatalogVersion:version                   	;                                               	; true	;  
+; InboundERPVariantProduct:ProductTaxGroup     	; code                   	; ProductTaxGroup:code                     	;                                               	; true	;  
+; InboundERPVariantProduct:ERPVariantProduct   	; sapConfigurable        	; ERPVariantProduct:sapConfigurable        	;                                               	; 	;  
+; InboundERPVariantProduct:ERPVariantProduct   	; sapBlockedDate         	; ERPVariantProduct:sapBlockedDate         	;                                               	; 	;  
+; InboundERPVariantProduct:ERPVariantProduct   	; features               	; ERPVariantProduct:features               	; InboundERPVariantProduct:ProductFeature      	; 	;  
+; InboundERPVariantProduct:ERPVariantProduct   	; sapBaseUnitConversion  	; ERPVariantProduct:sapBaseUnitConversion  	;                                               	; 	;  
+; InboundERPVariantProduct:ERPVariantProduct   	; code                   	; ERPVariantProduct:code                   	;                                               	; true	;  
+; InboundERPVariantProduct:ERPVariantProduct   	; catalogVersion         	; ERPVariantProduct:catalogVersion         	; InboundERPVariantProduct:CatalogVersion      	; true	;  
+; InboundERPVariantProduct:ERPVariantProduct   	; variantType            	; ERPVariantProduct:variantType            	; InboundERPVariantProduct:VariantType         	; 	;  
+; InboundERPVariantProduct:ERPVariantProduct   	; sapEAN                 	; ERPVariantProduct:sapEAN                 	;                                               	; 	;  
+; InboundERPVariantProduct:ERPVariantProduct   	; sapPlant               	; ERPVariantProduct:sapPlant               	; InboundERPVariantProduct:Warehouse           	; 	;  
+; InboundERPVariantProduct:ERPVariantProduct   	; baseProduct            	; ERPVariantProduct:baseProduct            	; InboundERPVariantProduct:Product             	; 	;  
+; InboundERPVariantProduct:ERPVariantProduct   	; Europe1PriceFactory_PDG	; ERPVariantProduct:Europe1PriceFactory_PDG	; InboundERPVariantProduct:ProductDiscountGroup	; 	;  
+; InboundERPVariantProduct:ERPVariantProduct   	; Europe1PriceFactory_PTG	; ERPVariantProduct:Europe1PriceFactory_PTG	; InboundERPVariantProduct:ProductTaxGroup     	; 	;  
+; InboundERPVariantProduct:ERPVariantProduct   	; name                   	; ERPVariantProduct:name                   	;                                               	; 	;  
+; InboundERPVariantProduct:ERPVariantProduct   	; sapBlocked             	; ERPVariantProduct:sapBlocked             	;                                               	; 	;  
+; InboundERPVariantProduct:ERPVariantProduct   	; unit                   	; ERPVariantProduct:unit                   	; InboundERPVariantProduct:Unit                	; 	;  
+; InboundERPVariantProduct:ERPVariantProduct   	; supercategories        	; ERPVariantProduct:supercategories        	; InboundERPVariantProduct:Category            	; 	;  
+; InboundERPVariantProduct:ERPVariantProduct   	; Europe1PriceFactory_PPG	; ERPVariantProduct:Europe1PriceFactory_PPG	; InboundERPVariantProduct:ProductPriceGroup   	; 	;  
+; InboundERPVariantProduct:Catalog             	; id                     	; Catalog:id                               	;                                               	; true	;  
+; InboundERPVariantProduct:Product             	; catalogVersion         	; Product:catalogVersion                   	; InboundERPVariantProduct:CatalogVersion      	; true	;  
+; InboundERPVariantProduct:Product             	; code                   	; Product:code                             	;                                               	; true	;  
+; InboundERPVariantProduct:ProductPriceGroup   	; code                   	; ProductPriceGroup:code                   	;                                               	; true	;  
+; InboundERPVariantProduct:VariantType         	; code                   	; VariantType:code                         	;                                               	; true	;  
+; InboundERPVariantProduct:Category            	; code                   	; Category:code                            	;                                               	; true	;  
+; InboundERPVariantProduct:Category            	; catalogVersion         	; Category:catalogVersion                  	; InboundERPVariantProduct:CatalogVersion      	; true	;  
+; InboundERPVariantProduct:Unit                	; code                   	; Unit:code                                	;                                               	; true	;  
+; InboundERPVariantProduct:Warehouse           	; code                   	; Warehouse:code                           	;                                               	; true	;  
+; InboundERPVariantProduct:ProductDiscountGroup	; code                   	; ProductDiscountGroup:code                	;                                               	; true	;  
+
+
+#**************************************************
+#************* ProductFeature ******************
+#**************************************************
+INSERT_UPDATE IntegrationObject; code[unique = true]; integrationType(code) 
+; InboundProductFeature; INBOUND 
+ 
+INSERT_UPDATE IntegrationObjectItem; integrationObject(code)[unique = true]; code[unique = true]; type(code)
+; InboundProductFeature	; ProductFeature	; ProductFeature	; 	  
+; InboundProductFeature	; Product       	; Product       	;   
+; InboundProductFeature	; Catalog       	; Catalog       	; 	  
+; InboundProductFeature	; CatalogVersion	; CatalogVersion	; 	  
+ 
+INSERT_UPDATE IntegrationObjectItemAttribute; integrationObjectItem(integrationObject(code), code)[unique = true]; attributeName[unique = true]; attributeDescriptor(enclosingType(code), qualifier); returnIntegrationObjectItem(integrationObject(code), code); unique[default = false]; autoCreate[default = false] 
+; InboundProductFeature:ProductFeature	; qualifier     	; ProductFeature:qualifier    	;                                      	; true	;  
+; InboundProductFeature:ProductFeature	; value         	; ProductFeature:value        	;                                      	; 	;  
+; InboundProductFeature:ProductFeature	; product       	; ProductFeature:product      	; InboundProductFeature:Product       	; true	;  
+; InboundProductFeature:ProductFeature	; author        	; ProductFeature:author       	;                                      	; 	;  
+; InboundProductFeature:ProductFeature	; valuePosition 	; ProductFeature:valuePosition	;                                      	; true	;  
+; InboundProductFeature:Product       	; catalogVersion	; Product:catalogVersion      	; InboundProductFeature:CatalogVersion	; true	;  
+; InboundProductFeature:Product       	; features      	; Product:features            	; InboundProductFeature:ProductFeature	; 	;  
+; InboundProductFeature:Product       	; code          	; Product:code                	;                                      	; true	;  
+; InboundProductFeature:Catalog       	; id            	; Catalog:id                  	;                                      	; true	;  
+; InboundProductFeature:CatalogVersion	; active        	; CatalogVersion:active       	;                                      	; 	;  
+; InboundProductFeature:CatalogVersion	; version       	; CatalogVersion:version      	;                                      	; true	;  
+; InboundProductFeature:CatalogVersion	; catalog       	; CatalogVersion:catalog      	; InboundProductFeature:Catalog       	; true	;  
+
+

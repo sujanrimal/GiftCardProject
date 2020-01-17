@@ -1,0 +1,11 @@
+INSERT_UPDATE UserGroup; UID[unique = true]     ; locname[lang = en]       ; description                                 ; groups(uid);
+                       ; integrationusergroup   ; Integration User Group   ; Common Group for all the Integration Groups ;            ;
+                       ; integrationadmingroup  ; Integration Admin Group  ; Integration Admin Group                     ;            ;
+                       ; integrationcreategroup ; Integration Create Group ; Integration Create Group                    ;            ;
+                       ; integrationviewgroup   ; Integration View Group   ; Integration View Group                      ;            ;
+
+INSERT_UPDATE UserGroup; UID[unique = true]     ; groups(uid)[mode = append]
+                       ; admingroup             ; integrationadmingroup ;
+                       ; integrationadmingroup  ; integrationusergroup  ;
+                       ; integrationcreategroup ; integrationusergroup  ;
+                       ; integrationviewgroup   ; integrationusergroup  ;
